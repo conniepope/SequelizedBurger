@@ -16,11 +16,6 @@
     "operatorsAliases": false
   },
   "production": {
-    "username": "iyiopr4ccu6j3owq",
-    "password": "wpkobzqu90gp5qs3",
-    "database": "ro792les23i6ury5",
-    "host": "e764qqay0xlsc4cz.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
-    "dialect": "mysql",
-    "operatorsAliases": false
+    "mysql": "//zjc95ljqows75z9q:dpz67cfqsxmgs5cy@tj5iv8piornf713y.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/nr7sm2r7cuws734n"
   }
 }
