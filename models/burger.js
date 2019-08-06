@@ -1,22 +1,21 @@
+// Sequelized dependency
 
-// import `orm.js` file
-var orm = require("../config/orm.js");
+// var Sequelize = require("sequelize");
+// var sequelize = require("../config/config.json");
 
-//create the code that will call the ORM functions using burger specific input for the ORM.
-
-var burger = {
-
-    create: function(newBurger){
-        return orm.insertOne("burgers", "burger_name", newBurger);
-    },
-
-    selectAll: function(){
-        return orm.selectAll("burgers");
-    },
-
-    updateOne: function(condition){
-        return orm.updateOne("burgers", condition)
-    }
+module.exports = function(sequelize, DataTypes){
+    var burgers = sequelize.define("burgers", {
+        burger_name: DataTypes.STRING,
+        devoured: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false
+        }
+    }, {
+        freezeTableName: true
+    },)
+    // Syncs with DB
+    burgers.sync();
+    return burgers;
 }
 
-module.exports = burger;
+
