@@ -1,44 +1,49 @@
-//import Express and `burger.js 
-var express = require("express");
+// Require models
+var db = require("../models");
+// require("../models/index");
 
-// Create the `router` for the app
-var router = express.Router();
+// var express = require("express");
+// var router = express.Router();
 
-var burger = require("../models/burger.js");
+// Routes
+module.exports = function(app) {
 
-//GET
-router.get("/", function(req, res) {
-    burger.selectAll()
-    .then(function(data) {
-        var object = {
-            burgers: data
-        };
-        console.log(object);
-        res.render("index", object);
+        // select all
+    app.get("/", function(req, res) {
+        db.burgers.findAll().then(function(dbBurger) {
+            res.render("index", dbBurger) 
+        });
     });
-});
-
-//POST 
-router.post("/api/burgers", function(req, res) {
-    console.log(req.body)
-    var burgerName = req.body.burger;
-    burger.create(burgerName)
-    .then(function(result){
-        res.json({id: result.insertId});
-    }) 
-});
-
-//PUT
-
-router.put("/api/burgers/:id", function (req, res) {
-    var condition = "id = " + req.params.id;
-    console.log("condition", condition);
-
-    burger.updateOne(condition)
-    .then()
-        // res.json(result)
+        // insert a new burger
+    app.post("/api/burgers", function(req, res) {
+        console.log("res: " + res)
+        db.burgers.create({
+            burger_name: req.body.burger,
+            devoured: false
+        }).then(function(result){
+            res.json({id: result.insertId});
+            console.log("Post result " + result)
+        });
     });
+        // update burger by making devoured = true
+    app.put("/api/burgers", function(req, res) {
+        db.burgers.update({
+            devoured: true
+        }, {
+            where: {
+                id: req.body.id
+            }
+        }).then(function(dbburgers){
+            res.json(dbburgers);
+        });
+    });
+};
 
-
-//export the `router`
-module.exports = router;
+// sequelize
+//   .authenticate()
+//   .then(() => {
+//     console.log('Connection has been established successfully.');
+//   })
+//   .catch(err => {
+//     console.error('Unable to connect to the database:', err);
+//   });

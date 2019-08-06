@@ -68,10 +68,11 @@
 
   $("#newBurger").on("submit", function(event) {
       event.preventDefault();
-
+      console.log("new burger button pressed")
       var newBurger= {
       burger: $("#newBurger [name=burger]").val().trim()
       };
+      console.log("New burger: " + newBurger.burger)
 
       // Send the POST request.
       $.ajax("/api/burgers", {
