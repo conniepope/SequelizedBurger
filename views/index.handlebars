@@ -1,0 +1,91 @@
+<div class="container">
+
+    <h1>Burgers to Devour!</h1>
+
+    <div id="top">
+      <ul>
+        {{#each burgers}} 
+              {{#unless this.devoured}}
+        <li>
+          {{this.burger_name}}
+          <form id="burgerList">
+            <input type="hidden" name="devoured" value="{{this.id}}">
+            <button data-id="{{this.id}}" class="devour" class="btn btn-default btn-lg">Devour!</button>
+          </form> 
+        </li>
+            {{/unless}}
+        {{/each}}
+      </ul>
+    </div>
+
+
+    <form id="newBurger" class="button-size">
+    <h3>Add a new burger to eat!</h3>
+      <textarea type="text" name="burger"></textarea>
+      <button type="submit">Save My Burger!</button>
+      </form>
+
+    <hr>
+      <div id="bottom">
+        <h3 id="belly">In my belly:</h3>
+      <ul>
+        {{#each burgers}} 
+              {{#if this.devoured}}
+        <li>
+          {{this.burger_name}}
+          </li>
+              {{/if}}
+        {{/each}}
+      </ul>
+
+    </div>
+
+</div>
+
+<!-- ------------------------------------------------------------- -->
+<script type=text/javascript>
+
+  $(".devour").on("click", function(event) {
+      // Get the ID from the button.
+      console.log("devoured button clicked");
+
+
+      var id = $(this).data("id");
+          console.log("DEVOURING BURGER id: ", id);
+
+      // Send the PUT request.
+      $.ajax("/api/burgers/" + id, {
+      method: "PUT",
+      }).then(
+      function(data) {
+
+          console.log("this burger has been devoured: ", change);
+          // Reload the page to get the updated list
+          location.reload();
+      }
+      );
+  });
+
+  $("#newBurger").on("submit", function(event) {
+      event.preventDefault();
+
+      var newBurger= {
+      burger: $("#newBurger [name=burger]").val().trim()
+      };
+
+      // Send the POST request.
+      $.ajax("/api/burgers", {
+      type: "POST",
+      data: newBurger
+      }).then(
+      function() {
+          console.log("A new burger to eat!");
+          // Reload the page to get the updated list
+          location.reload();
+      }
+      );
+  });
+
+  
+
+</script>
