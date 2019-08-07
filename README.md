@@ -1,8 +1,8 @@
 # Burger-Logger
 
-Technologies used: Node.js, mySQL, javascript, jQuery, Express.js, Handlebars, and ORM.
+Technologies used: Node.js, mySQL, javascript, jQuery, Express.js, Handlebars, and Sequelize.
 
-https://floating-ocean-56176.herokuapp.com/
+https://conniepope.github.io/SequelizedBurger/
 
 * Eat-Da-Burger! is a restaurant app that lets users input the names of burgers they'd like to eat.
 
