@@ -1,5 +1,5 @@
 {
-  "name": "burger-logger",
+  "name": "sequelized-burger",
   "version": "1.0.0",
   "description": "* Eat-Da-Burger! is a restaurant app that lets users input the names of burgers they'd like to eat.",
   "main": "index.js",
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/conniepope/Burger-Logger.git"
+    "url": "git+https://github.com/conniepope/SequelizedBurger.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/conniepope/Burger-Logger/issues"
+    "url": "https://github.com/conniepope/SequelizedBurger/issues"
   },
-  "homepage": "https://github.com/conniepope/Burger-Logger#readme",
+  "homepage": "https://github.com/conniepope/SequelizedBurger#readme",
   "dependencies": {
     "dotenv": "^8.0.0",
     "express": "^4.17.1",
