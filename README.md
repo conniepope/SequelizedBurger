@@ -1,4 +1,4 @@
-# Burger-Logger
+# Sequelized Burger
 
 Technologies used: Node.js, mySQL, javascript, jQuery, Express.js, Handlebars, and Sequelize.
 
