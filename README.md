@@ -4,7 +4,7 @@ Technologies used: Node.js, mySQL, javascript, jQuery, Express.js, Handlebars, a
 
 https://conniepope.github.io/SequelizedBurger/
 
-* Eat-Da-Burger! is a restaurant app that lets users input the names of burgers they'd like to eat.
+* Burgers To Devour! is a restaurant app that lets users input the names of burgers they'd like to eat.
 
 * Whenever a user submits a burger's name, the app will add it to the list -- waiting to be devoured.
 
