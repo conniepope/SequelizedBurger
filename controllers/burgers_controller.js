@@ -1,6 +1,5 @@
 // Require models
 var db = require("../models");
-// require("../models/index");
 
 // var express = require("express");
 // var router = express.Router();
@@ -10,8 +9,10 @@ module.exports = function(app) {
 
         // select all
     app.get("/", function(req, res) {
-        db.burgers.findAll().then(function(dbBurger) {
-            res.render("index", dbBurger) 
+        db.burgers.findAll({}).then(function(dbBurger) {
+            // var list = (var i = 0; i < burgers.length; i++)
+            console.log(dbBurger)
+            res.render("index", {burgers: dbBurger}) 
         });
     });
         // insert a new burger
@@ -27,6 +28,7 @@ module.exports = function(app) {
     });
         // update burger by making devoured = true
     app.put("/api/burgers", function(req, res) {
+        console.log("is this working?")
         db.burgers.update({
             devoured: true
         }, {
@@ -39,11 +41,3 @@ module.exports = function(app) {
     });
 };
 
-// sequelize
-//   .authenticate()
-//   .then(() => {
-//     console.log('Connection has been established successfully.');
-//   })
-//   .catch(err => {
-//     console.error('Unable to connect to the database:', err);
-//   });

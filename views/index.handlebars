@@ -5,12 +5,12 @@
     <div id="top">
       <ul>
         {{#each burgers}} 
-              {{#unless this.devoured}}
+              {{#unless this.dataValues.devoured}}
         <li>
-          {{this.burger_name}}
+          {{this.dataValues.burger_name}}
           <form id="burgerList">
-            <input type="hidden" name="devoured" value="{{this.id}}">
-            <button data-id="{{this.id}}" class="devour" class="btn btn-default btn-lg">Devour!</button>
+            <input type="hidden" name="devoured" value="{{this.dataValues.id}}">
+            <button data-id="{{this.dataValues.id}}" class="devour" class="btn btn-default btn-lg">Devour!</button>
           </form> 
         </li>
             {{/unless}}
@@ -30,9 +30,9 @@
         <h3 id="belly">In my belly:</h3>
       <ul>
         {{#each burgers}} 
-              {{#if this.devoured}}
+              {{#if this.dataValues.devoured}}
         <li>
-          {{this.burger_name}}
+          {{this.dataValues.burger_name}}
           </li>
               {{/if}}
         {{/each}}
@@ -53,13 +53,15 @@
       var id = $(this).data("id");
           console.log("DEVOURING BURGER id: ", id);
 
+
+  // THIS PART DOES NOT CURRENTLY WORK ------- KEEP GETING 404 ERROR ?????
       // Send the PUT request.
       $.ajax("/api/burgers/" + id, {
-      method: "PUT",
+      type: "PUT",
       }).then(
-      function(data) {
+      function() {
 
-          console.log("this burger has been devoured: ", change);
+          console.log("this burger has been devoured")
           // Reload the page to get the updated list
           location.reload();
       }
